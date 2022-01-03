@@ -50,6 +50,7 @@ canvas{
     height: 50px;
     border: none;
     border-radius: 7px;
+    transition: all 1.0s ease 0.2s;
 }
 .button2{
     background-color: #9EA3B0;
@@ -65,4 +66,10 @@ canvas{
     border: none;
     border-radius: 7px;
     margin-left: 400px;
+    transition: all 1.0s ease 0.2s;
+}
+.button1:hover, .button2:hover{
+    text-shadow: 4px 2px#0D1F2D;
+    color: #FAE1DF;
+    border-radius: 0px;
 }
