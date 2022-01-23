@@ -1,3 +1,6 @@
+right_x = 0;
+right_y = 0;
+right_score = 0;
 
 var paddle2 =10,paddle1=10;
 
@@ -26,6 +29,7 @@ function setup(){
 	video.size(700,600);
   video.hide();
   poseNet = ml5.poseNet(video, modelLoaded);
+  poseNet.on('pose', gotPoses);
 }
 function modelLoaded(){
   console.log("model loaded");
@@ -33,6 +37,11 @@ function modelLoaded(){
 
 
 function draw(){
+  if(right_score > 0.2){
+    fill(rgb(154, 242, 83))
+    stroke(rgb( 54, 123, 242,))
+    circle(200, 200, 5);
+  }
 
  background(0); 
 
@@ -73,7 +82,14 @@ function draw(){
     move();
 }
 
-
+function gotPoses(results){
+  if(results.length > 0){
+    console.log(results);
+    right_x = results[0].pose.rightWrist.x;
+    right_y = results[0].pose.rightWrist.y;
+    console.log("right wrist x = " + right_x + " and the right wrist y = " + right_y);
+  }
+}
 
 //function reset when ball does notcame in the contact of padde
 function reset(){
